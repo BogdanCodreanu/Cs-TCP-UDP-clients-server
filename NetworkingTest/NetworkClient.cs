@@ -8,7 +8,7 @@ using System.Net.Sockets;
 using Razziel.Network.Utilities;
 
 namespace Razziel.Network {
-    class Client {
+    class NetworkClient {
         /// <summary>
         /// Used to connect with the listener
         /// </summary>
@@ -75,7 +75,7 @@ namespace Razziel.Network {
         /// <param name="timeoutWihtoutResponseSeconds">What's the maximum number of seconds admited
         /// to not receive any message from the server before client considers it a timeout.
         /// Must be bigger than pingDelaySeconds</param>
-        public Client(int retryTimesToConnect = 50,
+        public NetworkClient(int retryTimesToConnect = 50,
             int pingDelaySeconds = 10, int timeoutWihtoutResponseSeconds = 15) {
             if (timeoutWihtoutResponseSeconds < pingDelaySeconds) {
                 timeoutWihtoutResponseSeconds = pingDelaySeconds + 1;

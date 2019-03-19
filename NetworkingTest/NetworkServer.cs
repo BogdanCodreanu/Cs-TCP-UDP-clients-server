@@ -9,7 +9,7 @@ using System.Net.Sockets;
 using Razziel.Network.Utilities;
 
 namespace Razziel.Network {
-    class Server {
+    class NetworkServer {
         /// <summary>
         /// How many miliseconds for a client to stay silet to be considered disconnected.
         /// </summary>
@@ -98,7 +98,7 @@ namespace Razziel.Network {
         /// If true, server will always start listening if there is room for a new connection (even if you
         /// stopped listening manually)
         /// Listening is turned off after max connections have been formed (independently of this value)</param>
-        public Server(int timeoutSecondsWithoutResponseClient, bool autoStartListening = true) {
+        public NetworkServer(int timeoutSecondsWithoutResponseClient, bool autoStartListening = true) {
             timeoutWithoutClientResponse = timeoutSecondsWithoutResponseClient * 1000;
             this.autoStartListening = autoStartListening;
         }

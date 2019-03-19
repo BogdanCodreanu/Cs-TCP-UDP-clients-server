@@ -47,7 +47,7 @@ namespace Razziel.Network {
         }
 
         private static void StartAsServer() {
-            Server server = new Server(20, autoStartListening: true);
+            NetworkServer server = new NetworkServer(20, autoStartListening: true);
             string ipAddressServer = GetLocalIps();
             server.StartServer(ipAddressServer, udpPort, tcpPortListen, tcpPortStart, 2);
             server.OnLogStatus += LogMessage;
@@ -75,7 +75,7 @@ namespace Razziel.Network {
         }
 
         private static void StartAsClient() {
-            Client client = new Client(10, 5, 7);
+            NetworkClient client = new NetworkClient(10, 5, 7);
             string ipAddressServer = GetLocalIps();
             client.ConnectClient(ipAddressServer, tcpPortListen);
             client.OnLogStatus += LogMessage;
