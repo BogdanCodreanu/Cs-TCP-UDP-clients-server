@@ -1,4 +1,4 @@
-# Cs TCP UDP clients server
+# C# TCP UDP clients server
  A library of 2 classes that are easy to use, allowing quick conenction between 2 devices.
  
  How to use:
