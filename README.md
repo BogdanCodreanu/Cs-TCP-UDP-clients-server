@@ -1,5 +1,5 @@
 # C# TCP UDP clients server
- A library of 2 classes that are easy to use, allowing quick conenction between 2 devices.
+ A library of 2 classes that are easy to use, allowing quick conenction between a server and n devices.
  
  How to use:
 Import files NetworkClient.cs, NetworkServer.cs and NetworkUtilities.cs in your project.
