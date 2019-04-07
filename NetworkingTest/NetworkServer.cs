@@ -6,9 +6,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
-using Razziel.Network.Utilities;
+using BogdanCodreanu.Network.Utilities;
 
-namespace Razziel.Network {
+namespace BogdanCodreanu.Network {
     class NetworkServer {
         /// <summary>
         /// How many miliseconds for a client to stay silet to be considered disconnected.
@@ -111,7 +111,7 @@ namespace Razziel.Network {
         /// <param name="portListenForConnections">The port where we listen for new connections</param>
         /// <param name="tcpPortStart">The first port where we're going to place tcp connections</param>
         /// <param name="maxConnections">Maximum connections</param>
-        public void StartServer(string ipAddress, int udpPort, int portListenForConnections, 
+        public void StartServer(string ipAddress, int udpPort, int portListenForConnections,
             int tcpPortStart, int maxConnections) {
             if (serverOn)
                 return;
@@ -161,7 +161,7 @@ namespace Razziel.Network {
         /// How many ports are currently avaliable?
         /// </summary>
         private int NrOfPortsAvaliable => maxConnections - GetNrOfPortsUsed();
-        
+
         /// <summary>
         /// Starts listening for incoming connections
         /// </summary>

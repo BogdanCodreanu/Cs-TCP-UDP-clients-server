@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
-using Razziel.Network.Utilities;
+using BogdanCodreanu.Network.Utilities;
 
-namespace Razziel.Network {
+namespace BogdanCodreanu.Network {
     class NetworkClient {
         /// <summary>
         /// Used to connect with the listener

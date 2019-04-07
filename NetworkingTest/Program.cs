@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 
 
-namespace Razziel.Network {
+namespace BogdanCodreanu.Network {
     class Program {
         private static int udpPort = 29970;
         private static int tcpPortListen = 29971;
@@ -55,17 +55,21 @@ namespace Razziel.Network {
             server.OnUDPReceivedMessage += delegate (IPEndPoint IPEndPoint, string message) {
                 Console.WriteLine($"UDP from {IPEndPoint.Address.ToString()}: {message}");
             };
-            server.OnTCPClientReceivedMessage += delegate (IPEndPoint IPEndPoint, 
+            server.OnTCPClientReceivedMessage += delegate (IPEndPoint IPEndPoint,
                 int portno, Utilities.MyNetworkUtilities.TcpMessageType type, string message) {
-                Console.WriteLine($"TCP from {IPEndPoint.Address.ToString()}: {message}");
-            };
+                    Console.WriteLine($"TCP from {IPEndPoint.Address.ToString()}: {message}");
+                };
 
             string inputString = null;
             while (!(inputString = Console.ReadLine()).ToUpper().Equals("EXIT")) {
                 inputString = inputString.ToUpper();
                 switch (inputString) {
-                    case "STOP": server.StopListening(); break;
-                    case "START": server.StartListeningForConnections(); break;
+                    case "STOP":
+                        server.StopListening();
+                        break;
+                    case "START":
+                        server.StartListeningForConnections();
+                        break;
                     default:
                         server.BroadcastMessage(Utilities.MyNetworkUtilities.TcpMessageType.Message, inputString);
                         break;
@@ -80,10 +84,10 @@ namespace Razziel.Network {
             client.ConnectClient(ipAddressServer, tcpPortListen);
             client.OnLogStatus += LogMessage;
 
-            client.OnReceivedTCPMessageFromServer += 
+            client.OnReceivedTCPMessageFromServer +=
                 delegate (Utilities.MyNetworkUtilities.TcpMessageType type, string message) {
                     Console.WriteLine("TCP from server: " + message);
-            };
+                };
 
             string inputString = null;
             while (!(inputString = Console.ReadLine()).ToUpper().Equals("EXIT")) {

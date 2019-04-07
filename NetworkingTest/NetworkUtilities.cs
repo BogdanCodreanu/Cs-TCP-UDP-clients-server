@@ -5,11 +5,11 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Razziel.Network.Utilities {
+namespace BogdanCodreanu.Network.Utilities {
     class MyNetworkUtilities {
         public const char START_MESSAGE_CHAR = '\u0002';
         public const char END_MESSAGE_CHAR = '\u0003';
-        
+
         // if you desire to add more message types, then make sure you add them in the
         // following dictionaries.
         public enum TcpMessageType {
@@ -34,7 +34,7 @@ namespace Razziel.Network.Utilities {
             { TcpMessageType.Message, 2 },
         };
         // and here
-        private static Dictionary<int, TcpMessageType> NumberToTcpTypeDictionary = 
+        private static Dictionary<int, TcpMessageType> NumberToTcpTypeDictionary =
             new Dictionary<int, TcpMessageType>() {
             { 0, TcpMessageType.Ping },
             { 1, TcpMessageType.Disconnect },
@@ -55,12 +55,12 @@ namespace Razziel.Network.Utilities {
             string msg = START_MESSAGE_CHAR + ComposeMessage(type, message) + END_MESSAGE_CHAR;
             return Encoding.ASCII.GetBytes(msg.ToCharArray(), 0, msg.Length);
         }
-         /// <summary>
-         /// Extracts message details from a buffer that came from a networkStream
-         /// </summary>
+        /// <summary>
+        /// Extracts message details from a buffer that came from a networkStream
+        /// </summary>
         public static (TcpMessageType type, string msg) ExtractMessage(byte[] buffer, int bytesRead) {
             string msg = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-            
+
             Console.WriteLine($"Msg extracting '{msg}'");
             string[] split = msg.Split('|');
             return (NumberToTcpTypeDictionary[int.Parse(split[0])], split[1]);
@@ -140,12 +140,12 @@ namespace Razziel.Network.Utilities {
             // message is between the 2 characters
             string finalizedMessage = messageSoFar.Substring(indexOfStartCharMsg + 1,
                 indexOfEndCharMsg - indexOfStartCharMsg - 1);
-            
+
             // and we delete from msg so far the finalized message.
             messageSoFar = messageSoFar.Substring(indexOfEndCharMsg + 1);
 
             return (finalizedMessage, true);
-            
+
         }
     }
 }
